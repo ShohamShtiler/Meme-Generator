@@ -1,0 +1,20 @@
+.main-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 16px; 
+    padding: 20px; 
+    box-sizing: border-box; 
+}
+
+.gallery-item {
+    border-radius: 10px; 
+    overflow: hidden; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+.gallery-item:hover {
+    cursor: pointer;
+    transform: scale(1.05); 
+}
+
+
