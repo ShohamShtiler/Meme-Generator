@@ -1,21 +1,21 @@
 /* SETUP */
-@import url('/styles/setup/typography.css');
-@import url('/styles/setup/vars.css');
+@import url('./setup/typography.css');
+@import url('./setup/vars.css');
 
 /* BASICS */
-@import url('/styles/basics/base.css');
-@import url('/styles/basics/helpers.css');
-@import url('/styles/basics/layout.css');
+@import url('./basics/base.css');
+@import url('./basics/helpers.css');
+@import url('./basics/layout.css');
 
 /* COMPONENTS */
-@import url('/styles/components/main-header.css');
-@import url('/styles/components/logo.css');
-@import url('/styles/components/main-footer.css');
-@import url('/styles/components/main-content.css');
-@import url('/styles/components/main-nav.css');
-@import url('/styles/components/main-screen.css');
-@import url('/styles/components/main-gallery.css');
-@import url('/styles/components/meme-editor.css');
+@import url('./components/main-header.css');
+@import url('./components/logo.css');
+@import url('./components/main-footer.css');
+@import url('./components/main-content.css');
+@import url('./components/main-nav.css');
+@import url('./components/main-screen.css');
+@import url('./components/main-gallery.css');
+@import url('./components/meme-editor.css');
 
 /* MQ */ 
-@import url('/styles/setup/mq.css');
+@import url('./setup/mq.css');
