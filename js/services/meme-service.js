@@ -16,7 +16,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Add Text Here',
             size: 20,
             color: 'red'
         }
@@ -24,19 +24,25 @@ var gMeme = {
 }
 
 var gSavedMemes = loadFromStorage('savedMemes') || []
-// var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 
+function renderMeme(canvas) {
+    if (!canvas) return console.error('Canvas element not found');
+    
+    const ctx = canvas.getContext('2d')
 
-function loadPictureToCanvas(ctx, canvas) {
     const img = new Image()
     const selectedImg = gImgs.find((img) => img.id === gMeme.selectedImgId)
     if (!selectedImg) return
 
-    img.onload = function () {
+    img.onload = () => {
         canvas.width = img.width
         canvas.height = img.height
         ctx.drawImage(img, 0, 0, img.width, img.height)
+
+        gMeme.lines.forEach((line, idx) => {
+            renderLine(ctx, line, idx, canvas)
+        })
     }
     img.src = selectedImg.url
 }
@@ -55,5 +61,16 @@ function saveMeme(canvas) {
 
 function getSavedMemes() {
     return gSavedMemes
+}
+
+function renderLine(ctx, line, idx, canvas) {
+    ctx.font = `${line.size}px Arial`
+    ctx.fillStyle = line.color
+    ctx.textAlign = 'center'
+
+    const lineHeight = line.size + 10
+    const yPos = canvas.height / 2 + idx * lineHeight
+    ctx.fillText(line.txt, canvas.width / 2, yPos)
+
 }
 

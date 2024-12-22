@@ -3,15 +3,24 @@
     margin-top: 250px;
 }
 
+
 .editor-container {
     display: flex;
     align-items: center;
     gap: 50px;
+}
 
+.editor-container canvas {
+    border-radius: 10px;
 }
 
 .editor-tools {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    
 }

@@ -44,8 +44,7 @@ function renderSavedMemes() {
 function onPictureClick(imgId) {
     gMeme.selectedImgId = imgId
     const canvas = document.getElementById('meme-canvas')
-    const ctx = canvas.getContext('2d')
-
-    loadPictureToCanvas(ctx, canvas)
+    
+    renderMeme(canvas)
     window.location.hash = 'meme'
 }
