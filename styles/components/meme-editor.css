@@ -1,3 +1,17 @@
+
 .meme-editor {
-    margin-top: 300px;
+    margin-top: 250px;
+}
+
+.editor-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+}
+
+.editor-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

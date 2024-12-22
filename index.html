@@ -29,8 +29,53 @@
 
       <main>
         <section class="main-gallery"></section>
+
         <section class="meme-editor" style="display: none;">
-            <canvas id="meme-canvas"></canvas>
+          <div class="editor-container">
+             <canvas id="meme-canvas"></canvas>
+
+            <div class="editor-tools">
+              <div class="text=editor">
+                <input 
+                   type="text"
+                   id="text-input"
+                   placeholder="Add Text Here"
+                   oninput="onTextChange(this.value)"
+                />
+                <button onclick="onAddText()">Add Text</button>       
+              </div>
+
+              <div class="font-editor-container">
+                <label for="font-size">Font Size:</label>
+                <input
+                   type="range"
+                   id="font-size"
+                   min="10"
+                   max="60"
+                   value="20"
+                   oninput="onFontSizeChange(this.value)"
+                />
+                
+                <label for="font-color">Font Color:</label>
+                <input 
+                   type="color"
+                   id="font-color"
+                   value="#000000"
+                   onchange="onFontColorChange(this.value)"
+                />
+
+              </div>
+
+              <div class="saved-container">
+                <button onclick="onSaveMeme()">Save</button>
+                <button onclick="onDownloadMeme()">Download</button>
+                <button onclick="onShareMeme()">Share</button>
+             </div>
+             
+           </div>
+
+          </div>
+           
         </section>
         <section class="saved" style="display: none;"></section>
       </main>
