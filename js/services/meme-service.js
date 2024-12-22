@@ -28,7 +28,7 @@ var gSavedMemes = loadFromStorage('savedMemes') || []
 
 function renderMeme(canvas) {
     if (!canvas) return console.error('Canvas element not found');
-    
+
     const ctx = canvas.getContext('2d')
 
     const img = new Image()
