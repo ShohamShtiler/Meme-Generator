@@ -31,7 +31,7 @@ function onLineClick(event) {
     for (let i = 0; i < gMeme.lines.length; i++) {
         const line = gMeme.lines[i]
         const isInLine = x >= line.x - line.width / 2 && x <= line.x + line.width / 2
-                         && y >= line.y - line.size && y <= line.y + line.size
+            && y >= line.y - line.size && y <= line.y + line.size
         if (isInLine) {
             gMeme.selectedLineIdx = i
             renderMeme(canvas)
@@ -52,6 +52,19 @@ function onSwitchLine() {
     onRenderMeme()
 }
 
+function onDeleteLine() {
+    const selectedLineIdx = gMeme.selectedLineIdx
+    if (selectedLineIdx === null || selectedLineIdx < 0 || selectedLineIdx >= gMeme.lines.length) {
+        console.error('invalid or no selected line')
+        return
+    }
+    gMeme.lines.splice(selectedLineIdx, 1)
+    gMeme.selectedLineIdx = gMeme.lines.length > 0 ? 0 : null
+    const canvas = document.getElementById('meme-canvas')
+    renderMeme(canvas)
+
+}
+
 function onFontSizeChange(size) {
     const selectedLineIdx = gMeme.selectedLineIdx
     if (selectedLineIdx === null || selectedLineIdx < 0 || selectedLineIdx >= gMeme.lines.length) {
@@ -66,6 +79,29 @@ function onFontSizeChange(size) {
 
 function onFontColorChange(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
+    const canvas = document.getElementById('meme-canvas')
+    renderMeme(canvas)
+}
+
+function onFontFamilyChange(fontFamily) {
+    const selectedLineIdx = gMeme.selectedLineIdx
+    if (selectedLineIdx === null || selectedLineIdx < 0 || selectedLineIdx >= gMeme.lines.length) {
+        console.error('invalid or no selected line')
+        return
+    }
+
+    gMeme.lines[selectedLineIdx].fontFamily = fontFamily
+    const canvas = document.getElementById('meme-canvas')
+    renderMeme(canvas)
+}
+
+function onTextAlignChange(alignment) {
+    const selectedLineIdx = gMeme.selectedLineIdx
+    if (selectedLineIdx === null || selectedLineIdx < 0 || selectedLineIdx >= gMeme.lines.length) {
+        console.error('invalid or no selected line')
+        return
+    }
+    gMeme.lines[selectedLineIdx].align = alignment
     const canvas = document.getElementById('meme-canvas')
     renderMeme(canvas)
 }
