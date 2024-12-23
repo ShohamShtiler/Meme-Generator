@@ -13,14 +13,32 @@ function onTextChange(text) {
 
 function onAddText() {
     const newLine = {
-        txt:'Add Text Here',
+        txt: 'Add Text Here',
         size: 20,
-        color:'white',
+        color: '#FFFFFF',
     }
     gMeme.lines.push(newLine)
     gMeme.selectedLineIdx = gMeme.lines.length - 1
     const canvas = document.getElementById('meme-canvas');
     renderMeme(canvas)
+}
+
+function onLineClick(event) {
+    const canvas = document.getElementById('meme-canvas')
+    const x = event.offsetX
+    const y = event.offsetY
+
+    for (let i = 0; i < gMeme.lines.length; i++) {
+        const line = gMeme.lines[i]
+        const isInLine = x >= line.x - line.width / 2 && x <= line.x + line.width / 2
+                         && y >= line.y - line.size && y <= line.y + line.size
+        if (isInLine) {
+            gMeme.selectedLineIdx = i
+            renderMeme(canvas)
+            updateEditor()
+            break
+        }
+    }
 }
 
 function onSwitchLine() {
@@ -36,8 +54,8 @@ function onSwitchLine() {
 
 function onFontSizeChange(size) {
     const selectedLineIdx = gMeme.selectedLineIdx
-    if(selectedLineIdx === null || selectedLineIdx < 0 || selectedLineIdx >= gMeme.lines.length) {
-        console.error('invalid or no selected line') 
+    if (selectedLineIdx === null || selectedLineIdx < 0 || selectedLineIdx >= gMeme.lines.length) {
+        console.error('invalid or no selected line')
         return
     }
 
@@ -58,7 +76,7 @@ function onSaveMeme() {
     alert('Meme saved!')
 }
 
-function onDownloadMeme () {
+function onDownloadMeme() {
     const canvas = document.getElementById('meme-canvas')
     const link = document.createElement('a')
     link.download = 'my-meme.png'
@@ -66,6 +84,7 @@ function onDownloadMeme () {
     link.click()
 }
 
+
 function onShareMeme() {
-    
+
 }

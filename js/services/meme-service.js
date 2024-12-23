@@ -9,6 +9,14 @@ var gImgs = [
     { id: 6, url: 'images/6.jpg', keywords: ['funny', 'cat'] },
     { id: 7, url: 'images/7.jpg', keywords: ['funny', 'cat'] },
     { id: 8, url: 'images/8.jpg', keywords: ['funny', 'cat'] },
+    { id: 9, url: 'images/9.jpg', keywords: ['funny', 'cat'] },
+    { id: 10, url: 'images/10.jpg', keywords: ['funny', 'cat'] },
+    { id: 11, url: 'images/11.jpg', keywords: ['funny', 'cat'] },
+    { id: 12, url: 'images/12.jpg', keywords: ['funny', 'cat'] },
+    { id: 13, url: 'images/13.jpg', keywords: ['funny', 'cat'] },
+    { id: 14, url: 'images/14.jpg', keywords: ['funny', 'cat'] },
+    { id: 15, url: 'images/15.jpg', keywords: ['funny', 'cat'] },
+    { id: 16, url: 'images/16.jpg', keywords: ['funny', 'cat'] },
 ]
 
 var gMeme = {
@@ -18,7 +26,7 @@ var gMeme = {
         {
             txt: 'Add Text Here',
             size: 40,
-            color: 'white',
+            color: '#FFFFFF',
         }
     ]
 }
@@ -73,24 +81,37 @@ function renderLine(ctx, line, idx, canvas) {
     const yPos = lineSpacing * (idx + 1)
     const xPos = canvas.width / 2
 
+    line.x = xPos
+    line.y = yPos
+    line.width = ctx.measureText(line.txt).width
+    line.height = line.size + 10
+
     ctx.fillText(line.txt, xPos, yPos)
 
     if (idx === gMeme.selectedLineIdx) {
-        const textWidth = ctx.measureText(line.txt).width
-
         const framePadding = 5
         const frameHeight = line.size * 1.2 + framePadding * 2
         ctx.strokeStyle = 'black'
         ctx.lineWidth = 2
         
         ctx.strokeRect(
-            xPos - textWidth / 2 - framePadding,
+            xPos - line.width / 2 - framePadding,
             yPos - line.size * 1,
-            textWidth + framePadding * 2,
+            line.width + framePadding * 2,
             frameHeight
         )
     }
 }
+
+function updateEditor() {
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    const textInput = document.getElementById('text-input')
+    textInput.value = line.txt
+    document.getElementById('font-size').value = line.size
+    document.getElementById('font-color').value = line.color
+}
+
+
 
 
 

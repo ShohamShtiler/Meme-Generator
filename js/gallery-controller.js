@@ -1,6 +1,9 @@
 'use strict'
 
 function onInit() {
+    const canvas = document.getElementById('meme-canvas')
+    canvas.addEventListener('click', onLineClick)
+
     handleRouting()
     renderGallery()
 
@@ -49,7 +52,7 @@ function onPictureClick(imgId) {
             {
                 txt: 'Add Text Here',
                 size: 40,
-                color: 'white',
+                color: '#FFFFFF',
             }
         ]
     }
