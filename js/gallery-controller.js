@@ -42,9 +42,19 @@ function renderSavedMemes() {
 }
 
 function onPictureClick(imgId) {
-    gMeme.selectedImgId = imgId
-    const canvas = document.getElementById('meme-canvas')
+    gMeme = {
+        selectedImgId: imgId,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'Add Text Here',
+                size: 20,
+                color: 'red',
+            }
+        ]
+    }
     
+    const canvas = document.getElementById('meme-canvas')
     renderMeme(canvas)
     window.location.hash = 'meme'
 }

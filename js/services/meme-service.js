@@ -18,7 +18,7 @@ var gMeme = {
         {
             txt: 'Add Text Here',
             size: 20,
-            color: 'red'
+            color: 'red',
         }
     ]
 }
@@ -30,8 +30,8 @@ function renderMeme(canvas) {
     if (!canvas) return console.error('Canvas element not found');
 
     const ctx = canvas.getContext('2d')
-
     const img = new Image()
+
     const selectedImg = gImgs.find((img) => img.id === gMeme.selectedImgId)
     if (!selectedImg) return
 
@@ -68,9 +68,14 @@ function renderLine(ctx, line, idx, canvas) {
     ctx.fillStyle = line.color
     ctx.textAlign = 'center'
 
-    const lineHeight = line.size + 10
-    const yPos = canvas.height / 2 + idx * lineHeight
-    ctx.fillText(line.txt, canvas.width / 2, yPos)
+    const totalLines = gMeme.lines.length
+    const lineSpacing = canvas.height / (totalLines + 1)
+    const yPos = lineSpacing * (idx + 1)
+    const xPos = canvas.width / 2
 
+    // console.log('Rendering line:', line, 'Position:', { x: xPos, y: yPos });
+
+
+    ctx.fillText(line.txt, xPos, yPos)
 }
 

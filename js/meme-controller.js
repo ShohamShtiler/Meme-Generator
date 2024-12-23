@@ -12,11 +12,11 @@ function onTextChange(text) {
 }
 
 function onAddText() {
-    const canvas = document.getElementById('meme-canvas');
-    if (!canvas) {
-        console.error('Canvas element not found');
-        return;
-    }
+    // const canvas = document.getElementById('meme-canvas');
+    // if (!canvas) {
+    //     console.error('Canvas element not found');
+    //     return;
+    // }
     const newLine = {
         txt:'Add Text Here',
         size: 20,
@@ -24,11 +24,18 @@ function onAddText() {
     }
     gMeme.lines.push(newLine)
     gMeme.selectedLineIdx = gMeme.lines.length - 1
+    const canvas = document.getElementById('meme-canvas');
     renderMeme(canvas)
 }
 
 function onFontSizeChange(size) {
-    gMeme.lines[gMeme.selectedLineIdx].size = size
+    const selectedLineIdx = gMeme.selectedLineIdx
+    if(!selectedLineIdx === null || selectedLineIdx < 0 || selectedLineIdx >= gMeme.lines.length) {
+        console.error('invalid or no selected line') 
+        return
+    }
+
+    gMeme.lines[selectedLineIdx].size = size
     const canvas = document.getElementById('meme-canvas')
     renderMeme(canvas)
 }
