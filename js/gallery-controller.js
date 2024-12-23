@@ -48,12 +48,12 @@ function onPictureClick(imgId) {
         lines: [
             {
                 txt: 'Add Text Here',
-                size: 20,
-                color: 'red',
+                size: 40,
+                color: 'white',
             }
         ]
     }
-    
+
     const canvas = document.getElementById('meme-canvas')
     renderMeme(canvas)
     window.location.hash = 'meme'

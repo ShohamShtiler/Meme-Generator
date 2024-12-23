@@ -17,8 +17,8 @@ var gMeme = {
     lines: [
         {
             txt: 'Add Text Here',
-            size: 20,
-            color: 'red',
+            size: 40,
+            color: 'white',
         }
     ]
 }
@@ -73,9 +73,28 @@ function renderLine(ctx, line, idx, canvas) {
     const yPos = lineSpacing * (idx + 1)
     const xPos = canvas.width / 2
 
-    // console.log('Rendering line:', line, 'Position:', { x: xPos, y: yPos });
-
-
     ctx.fillText(line.txt, xPos, yPos)
+
+    if (idx === gMeme.selectedLineIdx) {
+        const textWidth = ctx.measureText(line.txt).width
+
+        const framePadding = 5
+        const frameHeight = line.size * 1.2 + framePadding * 2
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 2
+        
+        ctx.strokeRect(
+            xPos - textWidth / 2 - framePadding,
+            yPos - line.size * 1,
+            textWidth + framePadding * 2,
+            frameHeight
+        )
+    }
 }
+
+
+
+
+
+
 
