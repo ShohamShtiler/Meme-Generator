@@ -11,16 +11,58 @@
 }
 
 .editor-container canvas {
-    border-radius: 10px;
+    border: 2px solid white;
 }
 
 .editor-tools {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f8f8f8;
-    
+    justify-content: space-evenly;
+    gap: 20px;
+    padding: 50px;
+    background-color: #D9CAB3;
+    border: 2px solid white;
+    width: 500px;
+    height: 500px;
 }
+
+.font-editor-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color:#6D9886;
+    padding: 1em;
+    gap: 10px;
+}
+
+button:not(.btn-menu) {
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Tajawal", serif;
+    font-size: 16px;
+    background-color: #212121;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:not(.btn-menu):hover {
+    background-color: #6D9886;
+}
+
+#text-input {
+    padding: 15px;
+    border: 2px solid black;
+    font-size: 18px;
+}
+
+#font-family {
+    padding: 5px;
+    font-size: 18px;
+}
+
+#text-align {
+    padding: 5px;
+    font-size: 18px;
+}
+
+

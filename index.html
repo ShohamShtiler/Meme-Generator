@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c982bd1cbc.js" crossorigin="anonymous"></script>
 </head>
 
 <div onclick="toggleMenu()" class="main-screen "></div>
@@ -15,7 +17,7 @@
 <body class="main-layout" onload="onInit()">
     <header class="main-header full main-layout">
         <div class="flex space-between align-center">
-          <div class="logo">Meme Generator<span class="dot">.</span></div>
+          <div class="logo">Meme Generator</div>
           <nav class="main-nav">
               <ul class="flex clean-list">
                   <li><a href="#gallery">Gallery</a></li>
@@ -23,7 +25,8 @@
                   <li><a href="#about">About</a></li>
               </ul>
           </nav>
-          <button onclick="toggleMenu()" type="button" class="btn-menu">≡</button>
+          <button onclick="toggleMenu()" type="button" class="btn-menu">
+            <i class="fa-solid fa-bars"></i></button>
         </div>
       </header>
 
@@ -35,20 +38,23 @@
              <canvas id="meme-canvas"></canvas>
 
             <div class="editor-tools">
-              <div class="text=editor">
                 <input 
                    type="text"
                    id="text-input"
                    placeholder="Add Text Here"
                    oninput="onTextChange(this.value)"
                 />
-                <button onclick="onAddText()">Add Line</button>
-                <button onclick="onSwitchLine()">Switch Line</button>
-                <button onclick="onDeleteLine()">Delete Line</button>       
-              </div>
-
+                <div>
+                  <button onclick="onAddText()">
+                    <i class="fa-solid fa-square-plus"></i> Add Line</button>
+                  <button onclick="onSwitchLine()">
+                    <i class="fa-solid fa-up-down"></i> Switch Line</button>
+                  <button onclick="onDeleteLine()">
+                    <i class="fa-solid fa-trash-can"></i> Delete Line</button>   
+                </div>
+             
               <div class="font-editor-container">
-                <label for="font-size">Font Size:</label>
+                <label for="font-size">Font size:</label>
                 <input
                    type="range"
                    id="font-size"
@@ -58,7 +64,7 @@
                    oninput="onFontSizeChange(this.value)"
                 />
                 
-                <label for="font-color">Font Color:</label>
+                <label for="font-color"></label>
                 <input 
                    type="color"
                    id="font-color"
@@ -66,7 +72,7 @@
                    onchange="onFontColorChange(this.value)"
                 />
 
-                <label for="font-family">Font Family:</label>
+                <label for="font-family">Font family:</label>
                 <select id="font-family" onchange="onFontFamilyChange(this.value)">
                   <option value="Arial">Arial</option>
                   <option value="Verdana">Verdana</option>
@@ -78,7 +84,7 @@
                   <option value="Tahoma">Tahoma</option>
                 </select>
 
-                <label for="text-align">Text Alignment:</label>
+                <label for="text-align"></label>
                 <select id="text-align" onchange="onTextAlignChange(this.value)">
                   <option value="center">Center</option>
                   <option value="left">Right</option>
@@ -90,12 +96,15 @@
               </div>
 
               <div class="saved-container">
-                <button onclick="onSaveMeme()">Save</button>
-                <button onclick="onDownloadMeme()">Download</button>
+                <button onclick="onSaveMeme()">
+                  <i class="fa-solid fa-download"></i> Save</button>
+                <button onclick="onDownloadMeme()">
+                  <i class="fa-solid fa-floppy-disk"></i> Download</button>
 
                 <form id="upload-form" onsubmit="uploadImg(this, event)" style="display: inline;">
                   <input class="img-data" type="hidden" name="img"/>
-                   <button type="submit">Share on Facebook</button>
+                   <button type="submit" >
+                    <i class="fa-solid fa-share"></i> Share</button>
                 </form>
              </div>
            </div>
@@ -104,6 +113,12 @@
         </section>
         <section class="saved" style="display: none;"></section>
       </main>
+
+      <footer class="main-footer">
+        <p>© 2024 Meme Generator - Created by Shoham</p>
+      </footer>
+
+
 
 
       <script src="./js/services/utils-service.js"></script>

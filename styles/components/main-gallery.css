@@ -1,14 +1,16 @@
 .main-gallery {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
     gap: 16px; 
-    padding: 20px; 
+    padding: 10px; 
     margin-top: 150px;
+    background-color: #6D9886;
 }
 
 .gallery-item {
-    border-radius: 10px; 
+    border: 2px solid white;
     overflow: hidden; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    background-color: black;
 }
 
 

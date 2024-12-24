@@ -8,8 +8,9 @@ html {
 
 body {
     margin: 0;
-    background-color: #4F4E4E;
+    background-color: #212121;
 }
+
 
 h1,
 h2,
@@ -23,6 +24,14 @@ h6 {
 img {
     width: 100%;
     max-width: 250px;
+    opacity: 0.6; 
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+img:hover {
+    opacity: 1; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); 
 }
 
 a {
