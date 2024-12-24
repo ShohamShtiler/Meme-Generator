@@ -92,7 +92,11 @@
               <div class="saved-container">
                 <button onclick="onSaveMeme()">Save</button>
                 <button onclick="onDownloadMeme()">Download</button>
-                <button onclick="onShareMeme()">Share</button>
+
+                <form id="upload-form" onsubmit="uploadImg(this, event)" style="display: inline;">
+                  <input class="img-data" type="hidden" name="img"/>
+                   <button type="submit">Share on Facebook</button>
+                </form>
              </div>
            </div>
           </div>

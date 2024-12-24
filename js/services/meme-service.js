@@ -35,7 +35,7 @@ var gSavedMemes = loadFromStorage('savedMemes') || []
 
 
 function renderMeme(canvas) {
-    
+
     if (!canvas) return console.error('Canvas element not found');
 
     const ctx = canvas.getContext('2d')
@@ -94,7 +94,7 @@ function renderLine(ctx, line, idx, canvas) {
         const frameHeight = line.size * 1.2 + framePadding * 2
         ctx.strokeStyle = 'black'
         ctx.lineWidth = 2
-        
+
         ctx.strokeRect(
             xPos - line.width / 2 - framePadding,
             yPos - line.size * 1,
@@ -111,6 +111,44 @@ function updateEditor() {
     document.getElementById('font-size').value = line.size
     document.getElementById('font-color').value = line.color
 }
+
+
+function uploadImg(elForm, ev) {
+    ev.preventDefault();
+    const canvas = document.getElementById('meme-canvas')
+    if (!canvas) {
+        console.error('Canvas not found!')
+        return
+    }
+
+    const dataUrl = canvas.toDataURL("image/jpeg")
+    document.querySelector('.img-data').value = dataUrl
+
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`
+        window.open(facebookShareUrl, '_blank')
+    }
+    doUploadImg(elForm, onSuccess);
+}
+
+
+function doUploadImg(elForm, onSuccess) {
+    var formData = new FormData(elForm);
+    fetch('//ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then((res) => res.text())
+        .then(onSuccess)
+        .catch((err) => {
+            console.error('Image upload failed:', err)
+            alert('Failed to upload the image. Please try again.')
+        })
+}
+
 
 
 

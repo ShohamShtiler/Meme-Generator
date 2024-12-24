@@ -7,8 +7,7 @@ function onRenderMeme() {
 
 function onTextChange(text) {
     gMeme.lines[gMeme.selectedLineIdx].txt = text
-    const canvas = document.getElementById('meme-canvas')
-    renderMeme(canvas)
+    onRenderMeme()
 }
 
 function onAddText() {
@@ -19,8 +18,7 @@ function onAddText() {
     }
     gMeme.lines.push(newLine)
     gMeme.selectedLineIdx = gMeme.lines.length - 1
-    const canvas = document.getElementById('meme-canvas');
-    renderMeme(canvas)
+    onRenderMeme()
 }
 
 function onLineClick(event) {
@@ -48,7 +46,6 @@ function onSwitchLine() {
 
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
     document.getElementById('text-input').value = selectedLine.txt
-
     onRenderMeme()
 }
 
@@ -60,9 +57,7 @@ function onDeleteLine() {
     }
     gMeme.lines.splice(selectedLineIdx, 1)
     gMeme.selectedLineIdx = gMeme.lines.length > 0 ? 0 : null
-    const canvas = document.getElementById('meme-canvas')
-    renderMeme(canvas)
-
+    onRenderMeme()
 }
 
 function onFontSizeChange(size) {
@@ -73,14 +68,12 @@ function onFontSizeChange(size) {
     }
 
     gMeme.lines[selectedLineIdx].size = size
-    const canvas = document.getElementById('meme-canvas')
-    renderMeme(canvas)
+    onRenderMeme()
 }
 
 function onFontColorChange(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
-    const canvas = document.getElementById('meme-canvas')
-    renderMeme(canvas)
+    onRenderMeme()
 }
 
 function onFontFamilyChange(fontFamily) {
@@ -91,8 +84,7 @@ function onFontFamilyChange(fontFamily) {
     }
 
     gMeme.lines[selectedLineIdx].fontFamily = fontFamily
-    const canvas = document.getElementById('meme-canvas')
-    renderMeme(canvas)
+    onRenderMeme()
 }
 
 function onTextAlignChange(alignment) {
@@ -102,8 +94,7 @@ function onTextAlignChange(alignment) {
         return
     }
     gMeme.lines[selectedLineIdx].align = alignment
-    const canvas = document.getElementById('meme-canvas')
-    renderMeme(canvas)
+    onRenderMeme()
 }
 
 function onSaveMeme() {
