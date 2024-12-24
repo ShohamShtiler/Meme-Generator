@@ -63,10 +63,10 @@
     }
 
     .btn-menu {
-        font-size: larger;
         background: 0 0;
         border: none;
         font-size: 1.5em;
+        
     }
 
     .btn-menu:hover {

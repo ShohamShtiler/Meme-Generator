@@ -25,8 +25,9 @@
                   <li><a href="#about">About</a></li>
               </ul>
           </nav>
-          <button onclick="toggleMenu()" type="button" class="btn-menu">
-            <i class="fa-solid fa-bars"></i></button>
+          <button onclick="toggleMenu()" class="btn-menu" >
+            <input type="checkbox" role="button" aria-label="Display the menu" class="menu">
+          </button>
         </div>
       </header>
 
@@ -45,11 +46,11 @@
                    oninput="onTextChange(this.value)"
                 />
                 <div>
-                  <button onclick="onAddText()">
+                  <button class="btn-editor" onclick="onAddText()">
                     <i class="fa-solid fa-square-plus"></i> Add Line</button>
-                  <button onclick="onSwitchLine()">
+                  <button class="btn-editor" onclick="onSwitchLine()">
                     <i class="fa-solid fa-up-down"></i> Switch Line</button>
-                  <button onclick="onDeleteLine()">
+                  <button class="btn-editor" onclick="onDeleteLine()">
                     <i class="fa-solid fa-trash-can"></i> Delete Line</button>   
                 </div>
              
@@ -96,14 +97,14 @@
               </div>
 
               <div class="saved-container">
-                <button onclick="onSaveMeme()">
+                <button class="btn-editor" onclick="onSaveMeme()">
                   <i class="fa-solid fa-download"></i> Save</button>
-                <button onclick="onDownloadMeme()">
+                <button class="btn-editor" onclick="onDownloadMeme()">
                   <i class="fa-solid fa-floppy-disk"></i> Download</button>
 
                 <form id="upload-form" onsubmit="uploadImg(this, event)" style="display: inline;">
                   <input class="img-data" type="hidden" name="img"/>
-                   <button type="submit" >
+                   <button class="btn-editor" type="submit" >
                     <i class="fa-solid fa-share"></i> Share</button>
                 </form>
              </div>

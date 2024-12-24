@@ -35,7 +35,7 @@
     gap: 10px;
 }
 
-button:not(.btn-menu) {
+.btn-editor {
     padding: 10px;
     cursor: pointer;
     font-family: "Tajawal", serif;
@@ -45,7 +45,7 @@ button:not(.btn-menu) {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:not(.btn-menu):hover {
+.btn-editor:hover {
     background-color: #6D9886;
 }
 
