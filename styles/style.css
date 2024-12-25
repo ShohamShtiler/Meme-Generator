@@ -10,13 +10,14 @@
 /* COMPONENTS */
 @import url('./components/main-header.css');
 @import url('./components/logo.css');
-@import url('./components/main-footer.css');
+@import url('./components/about.css');
 @import url('./components/main-content.css');
 @import url('./components/main-nav.css');
 @import url('./components/main-screen.css');
 @import url('./components/main-gallery.css');
 @import url('./components/meme-editor.css');
 @import url('./components/button-menu.css');
+
 
 /* MQ */ 
 @import url('./setup/mq.css');
