@@ -29,7 +29,7 @@ function showMemeEditor() {
 function showSavedMemes() {
   document.querySelector('.main-gallery').style.display = 'none'
   document.querySelector('.meme-editor').style.display = 'none'
-  document.querySelector('.saved').style.display = 'block'
+  document.querySelector('.saved').style.display = 'grid'
 }
 
 function toggleMenu() {

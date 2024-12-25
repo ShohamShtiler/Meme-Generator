@@ -20,3 +20,15 @@
 }
 
 
+.saved  {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 10px;
+    margin-top: 150px;
+    background-color: #ECEBDE;
+    cursor: pointer;
+}
+
+.saved  img {
+    opacity: 1;
+}
