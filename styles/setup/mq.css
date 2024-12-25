@@ -8,6 +8,7 @@
         position:fixed;
         background-color: rgb(0 0 0 / 85%);
         inset: 130px 0 auto;
+        z-index: 1;
     }
 
     .main-nav a:hover {
@@ -75,6 +76,7 @@
 
     .editor-container {
         flex-direction: column;
+        gap: 30px;
     }
 
     .editor-container canvas {
@@ -92,15 +94,11 @@
 
 
     .meme-editor {
-        margin-top: 150px;
+        margin-top: 40px;
     }
 
-    .main-gallery {
-        margin-top: 400px;
-    }
-
-    .saved  {
-        margin-top: 400px;
+    .main-footer {
+        opacity: 0;
     }
 
     /* Screen */
