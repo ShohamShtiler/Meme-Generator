@@ -2,7 +2,6 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
     gap: 16px; 
     padding: 10px; 
-    margin-top: 150px;
     background-color: #6D9886;
 }
 
@@ -26,9 +25,39 @@
     padding: 10px;
     margin-top: 150px;
     background-color: #ECEBDE;
+
+}
+.saved-item {
     cursor: pointer;
 }
-
 .saved  img {
     opacity: 1;
 }
+
+.saved .delete-btn {
+    display: block;
+    margin: 5px auto;
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.flexible-container {
+    margin-bottom: 20px;
+  }
+
+.btn-flexible {
+    margin-top: 100px;
+    padding: 10px;
+    border: 2px solid white;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #6D9886;
+  }
+  
+  .btn-flexible:hover {
+    background-color: #D9CAB3;
+  }

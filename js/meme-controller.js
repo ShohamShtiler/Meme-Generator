@@ -103,6 +103,26 @@ function onSaveMeme() {
     alert('Meme saved!')
 }
 
+
+function onSavedMemeClick(memeIdx) {
+    const savedMemes = getSavedMemes()
+    const meme = savedMemes[memeIdx]
+    if (!meme) return
+
+    gMeme = meme.memeData
+    onRenderMeme()
+    window.location.hash = 'meme'
+}
+
+function onDeleteSavedMeme(event, memeIdx) {
+    event.stopPropagation()
+    const savedMemes = getSavedMemes()
+    savedMemes.splice(memeIdx, 1)
+    saveToStorage('savedMemes',savedMemes)
+    renderSavedMemes()
+
+}
+
 function onDownloadMeme() {
     const canvas = document.getElementById('meme-canvas')
     const link = document.createElement('a')
@@ -111,7 +131,33 @@ function onDownloadMeme() {
     link.click()
 }
 
+function onFlexibleMeme() {
+    const randomIdx = getRandomInt(0, gImgs.length)
+    const randomImg = gImgs[randomIdx]
 
-function onShareMeme() {
+    const randomTexts = [
+        'Just do it!',
+        'Stay Hungry, Stay Foolish',
+        'YOLO!',
+        'Live Laugh Love',
+        'I am the one who knocks!',
+        'Keep Calm and Carry On'
+    ]
 
+    const randomText = randomTexts[getRandomInt(0, randomTexts.length)]
+    const randomColor = getRandomColor()
+
+    gMeme = {
+        selectedImgId : randomImg.id,
+        selectedLineIdx : 0,
+        lines: [
+            {
+                txt: randomText,
+                size: 40,
+                color: randomColor,
+            }
+        ]
+    }
+    onRenderMeme()
+    window.location.hash = 'meme'
 }

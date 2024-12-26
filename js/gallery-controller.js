@@ -19,6 +19,8 @@ function onInit() {
 
 function renderGallery() {
     const elGallery = document.querySelector('.main-gallery')
+    
+
     const imgsHTML = gImgs
         .map(
             (img) =>
@@ -35,9 +37,10 @@ function renderSavedMemes() {
     const elSaved = document.querySelector('.saved')
     const savedHTML = savedMemes
         .map(
-            (meme) =>
+            (meme, idx) =>
                 `<div class="saved-item">
-                    <img src="${meme.img}" alt="Saved Meme">
+                    <img src="${meme.img}" alt="Saved Meme" onclick="onSavedMemeClick(${idx})">
+                    <button class="delete-btn" onclick= "onDeleteSavedMeme(event, ${idx})">Delete<button>
                  </div>`
         )
         .join('')

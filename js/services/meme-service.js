@@ -105,9 +105,12 @@ function renderLine(ctx, line, idx, canvas) {
 }
 
 function updateEditor() {
+    if (!gMeme.lines.length) return
+
+
     const line = gMeme.lines[gMeme.selectedLineIdx]
     const textInput = document.getElementById('text-input')
-    textInput.value = line.txt
+    textInput.value = line.txt || ''
     document.getElementById('font-size').value = line.size
     document.getElementById('font-color').value = line.color
 }
