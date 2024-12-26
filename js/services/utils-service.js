@@ -17,7 +17,7 @@ function handleRouting() {
 
 function showGallery() {
   document.querySelector('.main-gallery').style.display = 'grid'
-  document.querySelector('.flexible-container').style.display = 'block'
+  document.querySelector('.flexible-container').style.display = 'flex'
   document.querySelector('.meme-editor').style.display = 'none'
   document.querySelector('.saved').style.display = 'none'
   document.querySelector('.about').style.display = 'none'

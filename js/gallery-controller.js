@@ -17,11 +17,11 @@ function onInit() {
 
 }
 
-function renderGallery() {
+function renderGallery( imgs = gImgs) {
     const elGallery = document.querySelector('.main-gallery')
     
 
-    const imgsHTML = gImgs
+    const imgsHTML = imgs
         .map(
             (img) =>
                 `<div class="gallery-item" onclick="onPictureClick(${img.id})">
@@ -63,4 +63,13 @@ function onPictureClick(imgId) {
     const canvas = document.getElementById('meme-canvas')
     renderMeme(canvas)
     window.location.hash = 'meme'
+}
+
+function onFilterGallery() {
+    const filterValue = document.getElementById('filter-input').value.toLowerCase()
+
+    const filteredImgs = gImgs.filter(img =>
+        img.keywords.some(keyword => keyword.toLowerCase().includes(filterValue))
+    )
+    renderGallery(filteredImgs)
 }

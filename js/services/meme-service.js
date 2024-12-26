@@ -56,6 +56,14 @@ function renderMeme(canvas) {
     img.src = selectedImg.url
 }
 
+function renderKeyWords() {
+    const keywords = [...new Set(gImgs.flatMap(img => img.keywords))].filter(keyword => keyword)
+    const elDatalist = document.getElementById('keywords-datalist')
+    elDatalist.innerHTML = keywords.map(keyword => `option value="${keyword}"></option>`).join('')
+}
+
+
+
 function saveMeme(canvas) {
     const memeDataUrl = canvas.toDataURL()
     const savedMeme = {

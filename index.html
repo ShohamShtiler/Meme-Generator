@@ -34,7 +34,17 @@
       <main>
         
         <section class="flexible-container">
-          <button class="btn-flexible" onclick="onFlexibleMeme()">I'm flexible</button>
+          <button class="btn-flexible" onclick="onFlexibleMeme()">
+            <i class="fa-solid fa-arrows-rotate"></i> I'm Flexible</button>
+            <div class="filter-container">
+              <input 
+              id="filter-input"
+              list="keywords-datalist"
+              placeholder="Filter by keyword..."
+              oninput="onFilterGallery()"
+              />
+              <datalist id="keywords-datalist"></datalist>
+            </div>
         </section>
 
         <section class="main-gallery"></section>
