@@ -1,4 +1,6 @@
 'use strict'
+let isDragging = false
+let dragStartPose = null
 
 function onRenderMeme() {
     const canvas = document.getElementById('meme-canvas')
@@ -118,7 +120,7 @@ function onDeleteSavedMeme(event, memeIdx) {
     event.stopPropagation()
     const savedMemes = getSavedMemes()
     savedMemes.splice(memeIdx, 1)
-    saveToStorage('savedMemes',savedMemes)
+    saveToStorage('savedMemes', savedMemes)
     renderSavedMemes()
 
 }
@@ -148,8 +150,8 @@ function onFlexibleMeme() {
     const randomColor = getRandomColor()
 
     gMeme = {
-        selectedImgId : randomImg.id,
-        selectedLineIdx : 0,
+        selectedImgId: randomImg.id,
+        selectedLineIdx: 0,
         lines: [
             {
                 txt: randomText,
@@ -160,4 +162,64 @@ function onFlexibleMeme() {
     }
     onRenderMeme()
     window.location.hash = 'meme'
+}
+
+function addCanvasEventListeners() {
+    const canvas = document.getElementById('meme-canvas')
+    canvas.addEventListener('mousedown', onDragStart)
+    canvas.addEventListener('mousemove', onDragMove)
+    canvas.addEventListener('mouseup', onDragEnd)
+    canvas.addEventListener('mouseleave', onDragEnd)
+}
+
+function onDragStart(event) {
+    const canvas = document.getElementById('meme-canvas')
+    const { offsetX, offsetY } = event
+
+    const clickedLineIdx = gMeme.lines.findIndex(line => isWithinLineBounds(line, offsetX, offsetY, canvas))
+    if (clickedLineIdx === -1) return
+
+    gMeme.selectedLineIdx = clickedLineIdx
+    dragStartPose = { x: offsetX, y: offsetY }
+    isDragging = true
+
+    console.log('Drag started:', dragStartPose, 'Line index:', clickedLineIdx)
+}
+
+function onDragMove(event) {
+    if (!isDragging) return
+
+    const { offsetX, offsetY } = event
+    const dx = offsetX - dragStartPose.x
+    const dy = offsetY - dragStartPose.y
+
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    if (selectedLine) {
+        selectedLine.x += dx
+        selectedLine.y += dy
+        dragStartPose = { x: offsetX, y: offsetY }
+    }
+    onRenderMeme()
+}
+
+function onDragEnd(event) {
+    if (!isDragging) return
+    isDragging = false
+    dragStartPose = null
+    console.log('Drag ended.')
+}
+
+function isWithinLineBounds(line, x, y, canvas) {
+    const ctx = canvas.getContext('2d')
+    ctx.font = `${line.size}px ${line.fontFamily || 'Arial'}`
+    const textWidth = ctx.measureText(line.txt).width
+    const textHeight = line.size
+
+    const lineXStart = line.x - textWidth / 2
+    const lineXEnd = line.x + textWidth / 2
+    const lineYStart = line.y - textHeight / 2
+    const lineYEnd = line.y + textHeight / 2
+
+    return x >= lineXStart && x <= lineXEnd && y >= lineYStart && y <= lineYEnd
+
 }

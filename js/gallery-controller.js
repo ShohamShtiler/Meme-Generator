@@ -7,6 +7,8 @@ function onInit() {
     handleRouting()
     renderGallery()
 
+    addCanvasEventListeners()
+    
     window.addEventListener('hashchange', () => {
         handleRouting()
 
@@ -40,7 +42,7 @@ function renderSavedMemes() {
             (meme, idx) =>
                 `<div class="saved-item">
                     <img src="${meme.img}" alt="Saved Meme" onclick="onSavedMemeClick(${idx})">
-                    <button class="delete-btn" onclick= "onDeleteSavedMeme(event, ${idx})">Delete<button>
+                    <button class="delete-btn" onclick= "onDeleteSavedMeme(event, ${idx})">Delete</button>
                  </div>`
         )
         .join('')

@@ -84,30 +84,30 @@ function renderLine(ctx, line, idx, canvas) {
     ctx.font = `${line.size}px ${line.fontFamily || 'Arial'}`
     ctx.fillStyle = line.color
     ctx.textAlign = line.align || 'center'
+    
+    if(!line.x || !line.y) {
+        line.x = canvas.width / 2
+        const totalLines = gMeme.lines.length
+        const lineSpacing = canvas.height / (totalLines + 1)
+        line.y = lineSpacing * (idx + 1)
+        
 
-    const totalLines = gMeme.lines.length
-    const lineSpacing = canvas.height / (totalLines + 1)
-    const yPos = lineSpacing * (idx + 1)
-    const xPos = canvas.width / 2
+    }
 
-    line.x = xPos
-    line.y = yPos
-    line.width = ctx.measureText(line.txt).width
-    line.height = line.size + 10
-
-    ctx.fillText(line.txt, xPos, yPos)
+    ctx.fillText(line.txt, line.x, line.y)
 
     if (idx === gMeme.selectedLineIdx) {
         const framePadding = 5
-        const frameHeight = line.size * 1.2 + framePadding * 2
-        ctx.strokeStyle = 'black'
+        ctx.strokeStyle = "black"
         ctx.lineWidth = 2
+        const textWidth = ctx.measureText(line.txt).width
+        console.log('color:', ctx.strokeStyle)
 
         ctx.strokeRect(
-            xPos - line.width / 2 - framePadding,
-            yPos - line.size * 1,
+            line.x - textWidth / 2 - framePadding,
+            line.y - line.size ,
             line.width + framePadding * 2,
-            frameHeight
+            line.size + 10
         )
     }
 }
@@ -136,7 +136,6 @@ function uploadImg(elForm, ev) {
     document.querySelector('.img-data').value = dataUrl
 
 
-    // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`
@@ -159,16 +158,3 @@ function doUploadImg(elForm, onSuccess) {
             alert('Failed to upload the image. Please try again.')
         })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
