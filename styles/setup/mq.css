@@ -4,11 +4,18 @@
         height: 130px;
     }
 
+    .logo {
+        font-size: 2.5em;
+    }
+
     .main-nav {
         position:fixed;
+        top: -100%;
+        left: 0;
+        right: 0;
         background-color: rgb(0 0 0 / 85%);
         inset: 130px 0 auto;
-        z-index: 1;
+        z-index: 10;
     }
 
     .main-nav a:hover {
@@ -74,14 +81,23 @@
         cursor: pointer;
     }
 
+    .btn-editor {
+        padding: 5px;
+    }
+
     .editor-container {
         flex-direction: column;
         gap: 30px;
     }
 
+    .font-editor-container {
+        padding: 5px;
+        margin: 0;
+    }
+
     .editor-container canvas {
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
     }
 
     .editor-tools {
@@ -89,6 +105,11 @@
         padding: 10px;
         width: 400px;
         height: auto;
+    }
+
+    #text-input {
+        padding: 5px;
+        font-size: 16px;
     }
 
 
@@ -101,7 +122,7 @@
         opacity: 0;
     }
 
-    /* Screen */
+    
     .main-screen {
         position: fixed;
         inset: 0;
@@ -121,7 +142,7 @@
 
 }
 
-  /* MEDIUM  */ 
+ 
 @media (min-width:821px) {
 
     .main-layout {
@@ -146,11 +167,14 @@
         margin-top: 100px;
     }
 
+    .logo {
+        font-size: 3em;
+    }
+
 }
 
 
 
-/* LARGE */
 
 @media (min-width: 1020px) {
 
@@ -172,3 +196,5 @@
     }
 
 }
+
+
