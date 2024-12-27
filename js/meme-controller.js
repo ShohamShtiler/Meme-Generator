@@ -170,18 +170,24 @@ function addCanvasEventListeners() {
     canvas.addEventListener('mousemove', onDragMove)
     canvas.addEventListener('mouseup', onDragEnd)
     canvas.addEventListener('mouseleave', onDragEnd)
+
+    canvas.addEventListener('touchstart', onTouchStart, {passive:false})
+    canvas.addEventListener('touchmove', onTouchMove, {passive:false})
+    canvas.addEventListener('touchend', onTouchEnd)
 }
 
 function onDragStart(event) {
     const canvas = document.getElementById('meme-canvas')
     const { offsetX, offsetY } = event
 
-    const clickedLineIdx = gMeme.lines.findIndex(line => isWithinLineBounds(line, offsetX, offsetY, canvas))
-    if (clickedLineIdx === -1) return
+    const clickedLineIdx = gMeme.lines.findIndex(line => 
+        isWithinLineBounds(line, offsetX, offsetY, canvas))
 
+    if (clickedLineIdx !== -1) 
     gMeme.selectedLineIdx = clickedLineIdx
-    dragStartPose = { x: offsetX, y: offsetY }
     isDragging = true
+    dragStartPose = { x: offsetX, y: offsetY }
+    canvas.style.cursor = 'grabbing'
 
     console.log('Drag started:', dragStartPose, 'Line index:', clickedLineIdx)
 }
@@ -189,6 +195,7 @@ function onDragStart(event) {
 function onDragMove(event) {
     if (!isDragging) return
 
+    const canvas = document.getElementById('meme-canvas')
     const { offsetX, offsetY } = event
     const dx = offsetX - dragStartPose.x
     const dy = offsetY - dragStartPose.y
@@ -197,16 +204,60 @@ function onDragMove(event) {
     if (selectedLine) {
         selectedLine.x += dx
         selectedLine.y += dy
+
         dragStartPose = { x: offsetX, y: offsetY }
+        onRenderMeme()
     }
-    onRenderMeme()
 }
 
-function onDragEnd(event) {
-    if (!isDragging) return
-    isDragging = false
-    dragStartPose = null
+function onDragEnd() {
+    const canvas = document.getElementById('meme-canvas')
+
+    if (isDragging) {
+        isDragging = false
+        canvas.style.cursor = 'default'
+        onRenderMeme()
+    }
     console.log('Drag ended.')
+}
+
+function onTouchStart(event) {
+    event.preventDefault()
+    const touch = event.touches[0]
+    const canvas = event.target
+
+    const rect = canvas.getBoundingClientRect()
+    const offsetX = touch.clientX - rect.left
+    const offsetY = touch.clientY - rect.top
+
+    const simulatedMouseEvent = {
+        offsetX,
+        offsetY,
+        target:canvas
+    }
+    onDragStart(simulatedMouseEvent)
+}
+
+function onTouchMove(event) {
+    event.preventDefault()
+    const touch = event.touches[0]
+    const canvas = event.target
+
+    const rect = canvas.getBoundingClientRect()
+    const offsetX = touch.clientX - rect.left
+    const offsetY = touch.clientY - rect.top
+
+    const simulatedMouseEvent = {
+        offsetX,
+        offsetY,
+        target:canvas
+    }
+    onDragMove(simulatedMouseEvent)
+}
+
+function onTouchEnd(event) {
+    event.preventDefault()
+    onDragEnd()
 }
 
 function isWithinLineBounds(line, x, y, canvas) {
