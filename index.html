@@ -32,10 +32,11 @@
       </header>
 
       <main>
-        
         <section class="flexible-container">
           <button class="btn-flexible" onclick="onFlexibleMeme()">
-            <i class="fa-solid fa-arrows-rotate"></i> I'm Flexible</button>
+            <i class="fa-solid fa-arrows-rotate"></i> I'm Flexible
+          </button>
+
             <div class="filter-container">
               <input 
               id="filter-input"
@@ -43,16 +44,34 @@
               placeholder="Filter by keyword..."
               oninput="onFilterGallery()"
               />
-              <datalist id="keywords-datalist"></datalist>
+              <datalist id="keywords-datalist">
+                <option value="animal"></option>
+                <option value="funny"></option>
+                <option value="baby"></option>
+                <option value="boss"></option>
+                <option value="other"></option>
+              </datalist>
             </div>
+            <!-- <button class="btn-upload">
+              <label for="image-upload">
+                <i class="fa-solid fa-upload"></i>Upload Image
+              </label>
+            </button>
+            <input type="file" id="image-upload" accept="image/*" style="display: none;"/> -->
         </section>
 
         <section class="main-gallery"></section>
 
         <section class="meme-editor" style="display: none;">
+
+          <div class="btn-flexible-editor-container">
+           <button class="btn-flexible-editor" onclick="onFlexibleMeme()">
+            <i class="fa-solid fa-arrows-rotate"></i> I'm Flexible
+           </button>
+         </div>
+
           <div class="editor-container">
              <canvas id="meme-canvas"></canvas>
-
             <div class="editor-tools">
                 <input 
                    type="text"

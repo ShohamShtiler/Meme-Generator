@@ -29,7 +29,6 @@ function showMemeEditor() {
   document.querySelector('.meme-editor').style.display = 'block'
   document.querySelector('.saved').style.display = 'none'
   document.querySelector('.about').style.display = 'none'
-
 }
 
 function showSavedMemes() {
@@ -37,7 +36,7 @@ function showSavedMemes() {
   document.querySelector('.flexible-container').style.display = 'none'
   document.querySelector('.meme-editor').style.display = 'none'
   document.querySelector('.about').style.display = 'none'
-  document.querySelector('.saved').style.display = 'grid'
+  document.querySelector('.saved').style.display = 'grid' 
 }
 
 function  showAbout() {
@@ -46,7 +45,6 @@ function  showAbout() {
   document.querySelector('.meme-editor').style.display = 'none'
   document.querySelector('.saved').style.display = 'none'
   document.querySelector('.about').style.display = 'block'
-
 }
 
 function toggleMenu() {

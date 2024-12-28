@@ -146,6 +146,10 @@
         pointer-events: auto;
     }
 
+    .btn-flexible-editor-container {
+        justify-content: center;
+    }
+
 }
 
  
@@ -177,6 +181,10 @@
         font-size: 3em;
     }
 
+    .btn-flexible-editor-container {
+        justify-content: center;
+    }
+
 }
 
 
@@ -200,7 +208,10 @@
     .meme-editor {
         margin-top: 200px;
     }
-
+    .btn-flexible-editor-container {
+        justify-content: center;
+        margin-left: 70px;
+    }
 }
 
 

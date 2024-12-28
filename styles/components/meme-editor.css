@@ -65,4 +65,25 @@
     font-size: 18px;
 }
 
+.btn-flexible-editor-container {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 10px;
+}
 
+.btn-flexible-editor {
+    padding: 5px;
+    border: 1px solid white;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #605678;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.btn-flexible-editor:hover {
+    background-color: #D9CAB3;
+    color: black;
+    transition: background-color .4s ease;
+
+}
