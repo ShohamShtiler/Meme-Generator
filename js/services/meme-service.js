@@ -2,21 +2,24 @@
 
 var gImgs = [
     { id: 1, url: 'images/1.jpg', keywords: ['funny', ''] },
-    { id: 2, url: 'images/2.jpg', keywords: ['dog', 'animal'] },
-    { id: 3, url: 'images/3.jpg', keywords: ['baby', 'animal'] },
-    { id: 4, url: 'images/4.jpg', keywords: ['animal', 'cat'] },
-    { id: 5, url: 'images/5.jpg', keywords: ['baby', 'boss'] },
-    { id: 6, url: 'images/6.jpg', keywords: ['funny', 'other'] },
-    { id: 7, url: 'images/7.jpg', keywords: ['funny', 'baby'] },
-    { id: 8, url: 'images/8.jpg', keywords: ['funny', ''] },
-    { id: 9, url: 'images/9.jpg', keywords: ['funny', 'baby'] },
-    { id: 10, url: 'images/10.jpg', keywords: ['funny', ''] },
+    { id: 2, url: 'images/2.jpg', keywords: ['waiting', ''] },
+    { id: 3, url: 'images/3.jpg', keywords: ['crazy', ''] },
+    { id: 4, url: 'images/4.jpg', keywords: ['funny', ''] },
+    { id: 5, url: 'images/5.jpg', keywords: ['movie', ''] },
+    { id: 6, url: 'images/6.jpg', keywords: ['crazy', ''] },
+    { id: 7, url: 'images/7.jpg', keywords: ['surprised', ''] },
+    { id: 8, url: 'images/8.jpg', keywords: ['crazy', ''] },
+    { id: 9, url: 'images/9.jpg', keywords: ['other', 'funny'] },
+    { id: 10, url: 'images/10.jpg', keywords: ['waiting', 'other'] },
     { id: 11, url: 'images/11.jpg', keywords: ['other', ''] },
-    { id: 12, url: 'images/12.jpg', keywords: ['other', ''] },
-    { id: 13, url: 'images/13.jpg', keywords: ['boss', ''] },
-    { id: 14, url: 'images/14.jpg', keywords: ['boss', ''] },
-    { id: 15, url: 'images/15.jpg', keywords: ['boss', ''] },
-    { id: 16, url: 'images/16.jpg', keywords: ['funny', ''] },
+    { id: 12, url: 'images/12.jpg', keywords: ['other', 'funny'] },
+    { id: 13, url: 'images/13.jpg', keywords: ['surprised', ''] },
+    { id: 14, url: 'images/14.jpg', keywords: ['stressed', ''] },
+    { id: 15, url: 'images/15.jpg', keywords: ['stressed', ''] },
+    { id: 16, url: 'images/16.jpg', keywords: ['crazy', ''] },
+    
+    
+
 ]
 
 var gMeme = {
