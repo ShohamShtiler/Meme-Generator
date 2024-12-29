@@ -8,7 +8,7 @@ var gImgs = [
     { id: 5, url: 'images/5.jpg', keywords: ['movie', ''] },
     { id: 6, url: 'images/6.jpg', keywords: ['crazy', ''] },
     { id: 7, url: 'images/7.jpg', keywords: ['surprised', ''] },
-    { id: 8, url: 'images/8.jpg', keywords: ['crazy', ''] },
+    { id: 8, url: 'images/8.jpg', keywords: ['crazy', 'other'] },
     { id: 9, url: 'images/9.jpg', keywords: ['other', 'funny'] },
     { id: 10, url: 'images/10.jpg', keywords: ['waiting', 'other'] },
     { id: 11, url: 'images/11.jpg', keywords: ['other', ''] },
@@ -17,9 +17,6 @@ var gImgs = [
     { id: 14, url: 'images/14.jpg', keywords: ['stressed', ''] },
     { id: 15, url: 'images/15.jpg', keywords: ['stressed', ''] },
     { id: 16, url: 'images/16.jpg', keywords: ['crazy', ''] },
-    
-    
-
 ]
 
 var gMeme = {
@@ -146,8 +143,8 @@ function uploadImg(elForm, ev) {
 
     function onSuccess(uploadedImgUrl) {
         uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`
-        window.open(facebookShareUrl, '_blank')
+        const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}`
+        window.location.href = facebookShareUrl
     }
     doUploadImg(elForm, onSuccess);
 }

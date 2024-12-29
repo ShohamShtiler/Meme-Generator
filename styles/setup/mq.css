@@ -149,11 +149,16 @@
     .btn-flexible-editor-container {
         justify-content: center;
     }
-    
+
     .main-footer {
         display: none;
     }
 
+    .btn-editor:hover{
+        background-color: #212121;
+        color: white;
+        transition: 0;
+    }
 }
 
  
