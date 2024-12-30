@@ -10,18 +10,18 @@
 
     .main-nav {
         position:fixed;
-        background-color: rgb(0 0 0 / 85%);
+        background-color: rgba(72, 30, 20, 0.85);
         inset: 130px 0 auto;
         z-index: 10;
     }
 
     .main-nav a:hover {
-        box-shadow: inset 0 -6px 0 #6D9886;
+        box-shadow: inset 0 -6px 0 #F1BC31;
         
     }
 
      .main-nav li {
-        border-bottom: 1px solid #1e1e1e;
+        border-bottom: 1px solid #E25822;
      }
 
     .main-nav a {
@@ -46,7 +46,7 @@
 
     .main-nav ul a {
         font-size: 1.5em;
-        color: #D9CAB3;
+        color: white
     }
 
     

@@ -1,6 +1,6 @@
 .menu {
     --s: 25px; /* control the size */
-    --c: black; /* the color */
+    --c: #F1BC31; /* the color */
     
     height: var(--s);
     aspect-ratio: 1;

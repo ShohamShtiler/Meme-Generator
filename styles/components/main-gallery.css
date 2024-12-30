@@ -2,14 +2,15 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
     gap: 16px; 
     padding: 10px; 
-    background-color: #6D9886;
+    /* background-color: #6D9886; */
 }
 
 .gallery-item {
-    border: 2px solid white;
+    border: 2px solid #F1BC31;
     overflow: hidden; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     background-color: black;
+    border-radius: 20px;
 }
 
 
@@ -24,7 +25,8 @@
     gap: 16px;
     padding: 10px;
     margin-top: 150px;
-    background-color: #ECEBDE;
+    background-color: #481E14;
+    border-radius: 20px;
 
 }
 .saved-item {
@@ -32,13 +34,17 @@
 }
 .saved  img {
     opacity: 1;
+    border: 2px solid #F1BC31;
+    border-radius: 20px;
+    
 }
 
 .saved .delete-btn {
     display: block;
     margin: 5px auto;
     padding: 5px 10px;
-    background-color: #A04747;
+    font-weight: bold;
+    background-color: #B22222;
     color: white;
     border: none;
     border-radius: 5px;
@@ -56,23 +62,28 @@
 
 .btn-flexible {
     padding: 10px;
-    border: 1px solid white;
+    border: 1px solid #E25822;
     font-size: 18px;
     cursor: pointer;
-    background-color: #605678;
+    background-color: #7C0A02;
     color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    
   }
   
   .btn-flexible:hover {
-    background-color: #D9CAB3;
-    color: black;
+    background-color: #F1BC31;
+    color: white;
     transition: background-color .4s ease;
   }
 
   #filter-input {
     padding: 10px;
     font-size: 18px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 10px;
+    border: 2px solid #E25822;
 
   }
