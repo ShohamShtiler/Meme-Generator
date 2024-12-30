@@ -54,6 +54,7 @@
 
 .btn-editor:hover {
     background-color: #F1BC31;
+    color: white;
 }
 
 #text-input {
