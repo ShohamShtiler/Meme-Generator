@@ -1,26 +1,26 @@
 'use strict'
 
 var gImgs = [
-    { id: 1, url: 'images/1.jpg', keywords: ['The flintstones', ''] },
-    { id: 2, url: 'images/2.jpg', keywords: ['Tom & Jerry', ''] },
-    { id: 3, url: 'images/3.jpg', keywords: ['Popeye', ''] },
-    { id: 4, url: 'images/4.jpg', keywords: ['Bugs Bunny', ''] },
-    { id: 5, url: 'images/5.jpg', keywords: ['the sylvester & tweety mysteries', ''] },
-    { id: 6, url: 'images/6.jpg', keywords: ['The flintstones', ''] },
-    { id: 7, url: 'images/7.jpg', keywords: ['The Pink Panther', ''] },
-    { id: 8, url: 'images/8.jpg', keywords: ['Tom & Jerry', ''] },
-    { id: 9, url: 'images/9.jpg', keywords: ['Bugs Bunny', ''] },
-    { id: 10, url: 'images/10.jpg', keywords: ['Tom & Jerry', ''] },
-    { id: 11, url: 'images/11.jpg', keywords: ['Bugs Bunny', ''] },
-    { id: 12, url: 'images/12.jpg', keywords: ['Bugs Bunny', ''] },
-    { id: 13, url: 'images/13.jpg', keywords: ['Tom & Jerry', ''] },
-    { id: 14, url: 'images/14.jpg', keywords: ['The Pink Panther', ''] },
-    { id: 15, url: 'images/15.jpg', keywords: ['Scooby Doo', ''] },
-    { id: 16, url: 'images/16.jpg', keywords: ['Tom & Jerry', ''] },
-    { id: 17, url: 'images/17.jpg', keywords: ['Yogi Bear', ''] },
-    { id: 18, url: 'images/18.jpg', keywords: ['Daffy Duck', ''] },
-    { id: 19, url: 'images/19.jpg', keywords: ['Daffy Duck', ''] },
-    { id: 20, url: 'images/20.jpg', keywords: ['Popeye', ''] },
+    { id: 1, url: 'images/1.jpg', keywords: ['The flintstones'] },
+    { id: 2, url: 'images/2.jpg', keywords: ['Tom & Jerry'] },
+    { id: 3, url: 'images/3.jpg', keywords: ['Popeye'] },
+    { id: 4, url: 'images/4.jpg', keywords: ['Bugs Bunny'] },
+    { id: 5, url: 'images/5.jpg', keywords: ['the sylvester & tweety mysteries'] },
+    { id: 6, url: 'images/6.jpg', keywords: ['The flintstones'] },
+    { id: 7, url: 'images/7.jpg', keywords: ['The Pink Panther'] },
+    { id: 8, url: 'images/8.jpg', keywords: ['Tom & Jerry'] },
+    { id: 9, url: 'images/9.jpg', keywords: ['Bugs Bunny'] },
+    { id: 10, url: 'images/10.jpg', keywords: ['Tom & Jerry'] },
+    { id: 11, url: 'images/11.jpg', keywords: ['Bugs Bunny'] },
+    { id: 12, url: 'images/12.jpg', keywords: ['Bugs Bunny'] },
+    { id: 13, url: 'images/13.jpg', keywords: ['Tom & Jerry'] },
+    { id: 14, url: 'images/14.jpg', keywords: ['The Pink Panther'] },
+    { id: 15, url: 'images/15.jpg', keywords: ['Scooby Doo'] },
+    { id: 16, url: 'images/16.jpg', keywords: ['Tom & Jerry'] },
+    { id: 17, url: 'images/17.jpg', keywords: ['Yogi Bear'] },
+    { id: 18, url: 'images/18.jpg', keywords: ['Daffy Duck'] },
+    { id: 19, url: 'images/19.jpg', keywords: ['Daffy Duck'] },
+    { id: 20, url: 'images/20.jpg', keywords: ['Popeye'] },
 ]
 
 var gMeme = {
@@ -37,7 +37,7 @@ var gMeme = {
 
 var gSavedMemes = loadFromStorage('savedMemes') || []
 
-
+//Meme Rendering
 function renderMeme(canvas) {
 
     if (!canvas) return console.error('Canvas element not found');
@@ -60,30 +60,7 @@ function renderMeme(canvas) {
     img.src = selectedImg.url
 }
 
-function renderKeyWords() {
-    const keywords = [...new Set(gImgs.flatMap(img => img.keywords))].filter(keyword => keyword)
-    const elDatalist = document.getElementById('keywords-datalist')
-    elDatalist.innerHTML = keywords.map(keyword => `option value="${keyword}"></option>`).join('')
-}
-
-
-
-function saveMeme(canvas) {
-    const memeDataUrl = canvas.toDataURL()
-    const savedMeme = {
-        id: Date.now(),
-        img: memeDataUrl,
-        memeData: { ...gMeme },
-    }
-    gSavedMemes.push(savedMeme)
-    console.log('Meme saved!', savedMeme)
-    saveToStorage('savedMemes', gSavedMemes)
-}
-
-function getSavedMemes() {
-    return gSavedMemes
-}
-
+//Line Rendering
 function renderLine(ctx, line, idx, canvas) {
     ctx.font = `${line.size}px ${line.fontFamily || 'Arial'}`
     ctx.fillStyle = line.color
@@ -121,6 +98,32 @@ function renderLine(ctx, line, idx, canvas) {
     }
 }
 
+//Keywords Rendering
+function renderKeyWords() {
+    const keywords = [...new Set(gImgs.flatMap(img => img.keywords))].filter(keyword => keyword)
+    const elDatalist = document.getElementById('keywords-datalist')
+    elDatalist.innerHTML = keywords.map(keyword => `option value="${keyword}"></option>`).join('')
+}
+
+
+//Meme saving
+function saveMeme(canvas) {
+    const memeDataUrl = canvas.toDataURL()
+    const savedMeme = {
+        id: Date.now(),
+        img: memeDataUrl,
+        memeData: { ...gMeme },
+    }
+    gSavedMemes.push(savedMeme)
+    console.log('Meme saved!', savedMeme)
+    saveToStorage('savedMemes', gSavedMemes)
+}
+
+function getSavedMemes() {
+    return gSavedMemes
+}
+
+//Meme Editor Update
 function updateEditor() {
     if (!gMeme.lines.length) return
 
@@ -132,7 +135,7 @@ function updateEditor() {
     document.getElementById('font-color').value = line.color
 }
 
-
+//Meme Share 
 function uploadImg(elForm, ev) {
     ev.preventDefault();
     const canvas = document.getElementById('meme-canvas')

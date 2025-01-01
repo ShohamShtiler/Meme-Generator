@@ -47,14 +47,16 @@ function  showAbout() {
   document.querySelector('.about').style.display = 'block'
 }
 
+//Toggle Mobile Menu
 function toggleMenu() {
   document.body.classList.toggle('menu-open');
 }
 
+
 function getRandomInt(min, max) {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
 function getRandomColor() {

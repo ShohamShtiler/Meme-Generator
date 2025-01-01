@@ -22,7 +22,6 @@ function onInit() {
 function renderGallery( imgs = gImgs) {
     const elGallery = document.querySelector('.main-gallery')
     
-
     const imgsHTML = imgs
         .map(
             (img) =>
@@ -48,6 +47,7 @@ function renderSavedMemes() {
         .join('')
     elSaved.innerHTML = savedHTML
 }
+
 
 function onPictureClick(imgId) {
     gMeme = {
