@@ -13,15 +13,54 @@ function onTextChange(text) {
 }
 
 function onAddText() {
+    // Handling the user click, creating the relevant line or object, and then sending this object to the service
     const newLine = {
         txt: 'Add Text Here',
         size: 20,
         color: '#FFFFFF',
     }
-    gMeme.lines.push(newLine)
-    gMeme.selectedLineIdx = gMeme.lines.length - 1
+    addText(newLine)
     onRenderMeme()
 }
+
+//Line Rendering
+function renderLine(ctx, line, idx, canvas) {
+    ctx.font = `${line.size}px ${line.fontFamily || 'Arial'}`
+    ctx.fillStyle = line.color
+    ctx.textAlign = line.align || 'center'
+
+    const xPos = line.x || canvas.width / 2
+    const yPos = line.y || (canvas.height / (gMeme.lines.length + 1)) * (idx + 1)
+
+    line.x = xPos
+    line.y = yPos
+
+    const textWidth = ctx.measureText(line.txt).width
+    const textMetrics = ctx.measureText(line.txt)
+    const textHeight = textMetrics.actualBoundingBoxAscent + textMetrics.actualBoundingBoxDescent
+
+    line.width = textWidth
+    line.height = textHeight
+    
+    
+    ctx.fillText(line.txt, xPos, yPos)
+
+    if (idx === gMeme.selectedLineIdx) {
+        const framePadding = 5
+        ctx.strokeStyle = "black"
+        ctx.lineWidth = 2
+       
+        console.log('color:', ctx.strokeStyle)
+
+        ctx.strokeRect(
+            xPos - textWidth / 2 - framePadding,
+            yPos - textMetrics.actualBoundingBoxAscent - framePadding,
+            textWidth + framePadding * 2,
+            textHeight + framePadding * 2,
+        )
+    }
+}
+
 
 function onLineClick(event) {
     const canvas = document.getElementById('meme-canvas')
@@ -171,8 +210,8 @@ function addCanvasEventListeners() {
     canvas.addEventListener('mouseup', onDragEnd)
     canvas.addEventListener('mouseleave', onDragEnd)
 
-    canvas.addEventListener('touchstart', onTouchStart, {passive:false})
-    canvas.addEventListener('touchmove', onTouchMove, {passive:false})
+    canvas.addEventListener('touchstart', onTouchStart, { passive: false })
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false })
     canvas.addEventListener('touchend', onTouchEnd)
 }
 
@@ -180,11 +219,11 @@ function onDragStart(event) {
     const canvas = document.getElementById('meme-canvas')
     const { offsetX, offsetY } = event
 
-    const clickedLineIdx = gMeme.lines.findIndex(line => 
+    const clickedLineIdx = gMeme.lines.findIndex(line =>
         isWithinLineBounds(line, offsetX, offsetY, canvas))
 
-    if (clickedLineIdx !== -1) 
-    gMeme.selectedLineIdx = clickedLineIdx
+    if (clickedLineIdx !== -1)
+        gMeme.selectedLineIdx = clickedLineIdx
     isDragging = true
     dragStartPose = { x: offsetX, y: offsetY }
     canvas.style.cursor = 'grabbing'
@@ -233,7 +272,7 @@ function onTouchStart(event) {
     const simulatedMouseEvent = {
         offsetX,
         offsetY,
-        target:canvas
+        target: canvas
     }
     onDragStart(simulatedMouseEvent)
 }
@@ -250,7 +289,7 @@ function onTouchMove(event) {
     const simulatedMouseEvent = {
         offsetX,
         offsetY,
-        target:canvas
+        target: canvas
     }
     onDragMove(simulatedMouseEvent)
 }

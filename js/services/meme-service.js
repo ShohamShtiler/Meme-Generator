@@ -60,43 +60,11 @@ function renderMeme(canvas) {
     img.src = selectedImg.url
 }
 
-//Line Rendering
-function renderLine(ctx, line, idx, canvas) {
-    ctx.font = `${line.size}px ${line.fontFamily || 'Arial'}`
-    ctx.fillStyle = line.color
-    ctx.textAlign = line.align || 'center'
-
-    const xPos = line.x || canvas.width / 2
-    const yPos = line.y || (canvas.height / (gMeme.lines.length + 1)) * (idx + 1)
-
-    line.x = xPos
-    line.y = yPos
-
-    const textWidth = ctx.measureText(line.txt).width
-    const textMetrics = ctx.measureText(line.txt)
-    const textHeight = textMetrics.actualBoundingBoxAscent + textMetrics.actualBoundingBoxDescent
-
-    line.width = textWidth
-    line.height = textHeight
-    
-    
-    ctx.fillText(line.txt, xPos, yPos)
-
-    if (idx === gMeme.selectedLineIdx) {
-        const framePadding = 5
-        ctx.strokeStyle = "black"
-        ctx.lineWidth = 2
-       
-        console.log('color:', ctx.strokeStyle)
-
-        ctx.strokeRect(
-            xPos - textWidth / 2 - framePadding,
-            yPos - textMetrics.actualBoundingBoxAscent - framePadding,
-            textWidth + framePadding * 2,
-            textHeight + framePadding * 2,
-        )
-    }
+function addText(line) {
+    gMeme.lines.push(line)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
+
 
 //Keywords Rendering
 function renderKeyWords() {
